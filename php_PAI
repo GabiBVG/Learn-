@@ -1,0 +1,44 @@
+mysql_connect("localhost","root","password") or die ("Nu se poate conecta la server-ul MySQL");
+mysql_select_db("persoane") or die ("Nu se poate deschide baza de date");
+
+$numePersoana = $_POST("nume");
+
+$query = mysql_query("SELECT * FROM table WHERE nume='$numePersoana'");
+
+$nr_col = mysql_num_fields($query);
+
+while($row = mysql_fetch_row($query)) // returneaza un rand
+{
+  ...
+  foreach($row as $value)
+  echo "<td>$value</td>";
+  ...
+}
+
+mysql_close();
+echo mysql_field_name($fields, $i);
+echo mysql_field_type($fields, $i);
+
+$query1=mysql_query("insert into studenti_AC values('$marca','$nume','$prenume',$an)"); 
+$query2=mysql_query("select * from studenti_AC where marca='$marca'"); 
+
+
+------------------------------------------------------------
+
+$connection = OCILogon("user", "password", "db");
+
+$connection = OCILogon("student", "student", "orcl");
+$stmt = OCIParse($connection, "SELECT * FROM angajati");
+OCIExecute($stmt);
+
+while(OCIFetch($stmt))
+{
+  $id = OCIResult($stmt, "ID");
+   $id1 = OCIResult($stmt, "ID1");
+    $id2 = OCIResult($stmt, "ID2");
+    print (" <tr>".
+      " <td>$id</td>"....
+      );
+
+array oci_fetch_array ( resource $statement [, int $mode ] )
+
